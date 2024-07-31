@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1109A5002C5A88F500B24E8E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1109A4FF2C5A88F500B24E8E /* ContentViewModel.swift */; };
+		1109A5022C5A89D400B24E8E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1109A5012C5A89D400B24E8E /* ImagePicker.swift */; };
+		1109A5042C5AA5E400B24E8E /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1109A5032C5AA5E400B24E8E /* DishView.swift */; };
 		1193F4242C5A543100BC680A /* WorldDishesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193F4232C5A543100BC680A /* WorldDishesApp.swift */; };
 		1193F4262C5A543100BC680A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193F4252C5A543100BC680A /* ContentView.swift */; };
 		1193F4282C5A543300BC680A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1193F4272C5A543300BC680A /* Assets.xcassets */; };
@@ -34,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1109A4FD2C5A840A00B24E8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1109A4FF2C5A88F500B24E8E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		1109A5012C5A89D400B24E8E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1109A5032C5AA5E400B24E8E /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		1193F4202C5A543100BC680A /* WorldDishes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldDishes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1193F4232C5A543100BC680A /* WorldDishesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldDishesApp.swift; sourceTree = "<group>"; };
 		1193F4252C5A543100BC680A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,10 +101,14 @@
 		1193F4222C5A543100BC680A /* WorldDishes */ = {
 			isa = PBXGroup;
 			children = (
-				1193F4232C5A543100BC680A /* WorldDishesApp.swift */,
 				1193F4252C5A543100BC680A /* ContentView.swift */,
+				1109A4FD2C5A840A00B24E8E /* Info.plist */,
+				1193F4232C5A543100BC680A /* WorldDishesApp.swift */,
 				1193F4272C5A543300BC680A /* Assets.xcassets */,
 				1193F4292C5A543300BC680A /* Preview Content */,
+				1109A4FF2C5A88F500B24E8E /* ContentViewModel.swift */,
+				1109A5012C5A89D400B24E8E /* ImagePicker.swift */,
+				1109A5032C5AA5E400B24E8E /* DishView.swift */,
 			);
 			path = WorldDishes;
 			sourceTree = "<group>";
@@ -258,7 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1193F4262C5A543100BC680A /* ContentView.swift in Sources */,
+				1109A5042C5AA5E400B24E8E /* DishView.swift in Sources */,
+				1109A5022C5A89D400B24E8E /* ImagePicker.swift in Sources */,
 				1193F4242C5A543100BC680A /* WorldDishesApp.swift in Sources */,
+				1109A5002C5A88F500B24E8E /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,11 +439,17 @@
 				DEVELOPMENT_TEAM = JNCX3N77YD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorldDishes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "World Dishes Translator";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to your camera to take photos of menus.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your camera to take photos of menus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,11 +474,17 @@
 				DEVELOPMENT_TEAM = JNCX3N77YD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorldDishes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "World Dishes Translator";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to your camera to take photos of menus.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your camera to take photos of menus.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
