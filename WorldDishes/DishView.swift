@@ -9,27 +9,31 @@ import SwiftUI
 
 struct DishView: View {
     let dish: TranslatedDish
+    @State private var showDetailedView = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(dish.originalName)
-                .font(.headline)
-                .foregroundColor(.primary)
-                .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
+            HStack {
+                if dish.isCertified {
+                    Image(systemName: "checkmark.seal.fill")
+                        .foregroundColor(.green)
+                }
+                Text(dish.originalName)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+            }
+            .lineLimit(2)
             
             Text(dish.translation)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
             
             if !dish.description.isEmpty {
                 Text(dish.description)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .lineLimit(3)
-                    .fixedSize(horizontal: false, vertical: true)
             }
             
             if !dish.allergens.isEmpty {
@@ -37,7 +41,6 @@ struct DishView: View {
                     .font(.caption2)
                     .foregroundColor(.red)
                     .lineLimit(2)
-                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .padding()
@@ -45,6 +48,12 @@ struct DishView: View {
         .background(Color.white)
         .cornerRadius(8)
         .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 2)
+        .onTapGesture {
+            showDetailedView = true
+        }
+        .sheet(isPresented: $showDetailedView) {
+            DetailedDishView(dish: dish)
+        }
     }
 }
 
@@ -53,4 +62,5 @@ struct TranslatedDish {
     let translation: String
     let description: String
     let allergens: [String]
+    let isCertified: Bool
 }

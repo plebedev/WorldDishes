@@ -17,6 +17,7 @@
 		1193F4352C5A543300BC680A /* WorldDishesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193F4342C5A543300BC680A /* WorldDishesTests.swift */; };
 		1193F43F2C5A543300BC680A /* WorldDishesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193F43E2C5A543300BC680A /* WorldDishesUITests.swift */; };
 		1193F4412C5A543300BC680A /* WorldDishesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1193F4402C5A543300BC680A /* WorldDishesUITestsLaunchTests.swift */; };
+		11C23EBE2C6BD7F100049312 /* DetailedDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C23EBD2C6BD7F100049312 /* DetailedDishView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1193F43A2C5A543300BC680A /* WorldDishesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WorldDishesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1193F43E2C5A543300BC680A /* WorldDishesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldDishesUITests.swift; sourceTree = "<group>"; };
 		1193F4402C5A543300BC680A /* WorldDishesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldDishesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		11C23EBD2C6BD7F100049312 /* DetailedDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDishView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				1109A4FF2C5A88F500B24E8E /* ContentViewModel.swift */,
 				1109A5012C5A89D400B24E8E /* ImagePicker.swift */,
 				1109A5032C5AA5E400B24E8E /* DishView.swift */,
+				11C23EBD2C6BD7F100049312 /* DetailedDishView.swift */,
 			);
 			path = WorldDishes;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				1109A5042C5AA5E400B24E8E /* DishView.swift in Sources */,
 				1109A5022C5A89D400B24E8E /* ImagePicker.swift in Sources */,
 				1193F4242C5A543100BC680A /* WorldDishesApp.swift in Sources */,
+				11C23EBE2C6BD7F100049312 /* DetailedDishView.swift in Sources */,
 				1109A5002C5A88F500B24E8E /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

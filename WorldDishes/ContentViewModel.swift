@@ -129,7 +129,8 @@ class ContentViewModel: ObservableObject {
                     originalName: originalName,
                     translation: dishInfo["translation"] as? String ?? "",
                     description: dishInfo["description"] as? String ?? "",
-                    allergens: dishInfo["allergens"] as? [String] ?? []
+                    allergens: dishInfo["allergens"] as? [String] ?? [],
+                    isCertified: dishInfo["certified"] as? Bool ?? false
                 )
             }
         }

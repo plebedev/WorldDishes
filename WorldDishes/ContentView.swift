@@ -146,7 +146,12 @@ struct ContentView: View {
             
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
                 ForEach(viewModel.translatedDishes, id: \.originalName) { dish in
-                    DishView(dish: dish)
+                    Button(action: {
+                        // This action will be handled by the DishView's onTapGesture
+                    }) {
+                        DishView(dish: dish)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }
