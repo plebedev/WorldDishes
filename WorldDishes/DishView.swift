@@ -12,41 +12,45 @@ struct DishView: View {
     @State private var showDetailedView = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack {
                 if dish.isCertified {
                     Image(systemName: "checkmark.seal.fill")
                         .foregroundColor(.green)
+                        .font(.caption)
                 }
                 Text(dish.originalName)
-                    .font(.headline)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
                     .foregroundColor(.primary)
             }
-            .lineLimit(2)
+            .lineLimit(1)
             
             Text(dish.translation)
-                .font(.subheadline)
+                .font(.caption)
                 .foregroundColor(.secondary)
-                .lineLimit(2)
+                .lineLimit(1)
             
             if !dish.description.isEmpty {
                 Text(dish.description)
                     .font(.caption)
                     .foregroundColor(.secondary)
-                    .lineLimit(3)
+                    .lineLimit(2)
             }
             
             if !dish.allergens.isEmpty {
                 Text("Allergens: \(dish.allergens.joined(separator: ", "))")
                     .font(.caption2)
                     .foregroundColor(.red)
-                    .lineLimit(2)
+                    .lineLimit(1)
             }
         }
-        .padding()
+        .padding(8)
+        .frame(height: 100) // Fixed height for uniformity
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.white)
         .cornerRadius(8)
-        .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 2)
+        .shadow(color: .gray.opacity(0.2), radius: 3, x: 0, y: 2)
         .onTapGesture {
             showDetailedView = true
         }
