@@ -20,6 +20,10 @@ class ContentViewModel: ObservableObject {
 
     let languages = ["Russian", "Ukrainian", "Hebrew", "English", "Spanish", "French", "German", "Italian"]
 
+#if DEBUG
+    var isDebugMode = false
+    #endif
+    
     init() {
         self.selectedLanguage = "English"
         setDefaultLanguage()
@@ -54,6 +58,13 @@ class ContentViewModel: ObservableObject {
         menuLanguage = nil
         sourceLanguage = nil
         translatedDishes = []
+        
+#if DEBUG
+        if isDebugMode {
+            simulateTranslation()
+            return
+        }
+#endif
         
         let resizedImage = resizeImage(image: image, targetSize: CGSize(width: 1024, height: 1024))
         
@@ -113,6 +124,26 @@ class ContentViewModel: ObservableObject {
             }
         }.resume()
     }
+    
+#if DEBUG
+    private func simulateTranslation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Simulate network delay
+            self.menuLanguage = "Simulated \(self.selectedLanguage) Menu"
+            self.sourceLanguage = "English"
+            
+            self.translatedDishes = [
+                TranslatedDish(originalName: "Spaghetti Carbonara", translation: "Спагетти Карбонара", description: "Классическое итальянское блюдо из пасты с яйцами, сыром, перцем и панчеттой", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: true),
+                TranslatedDish(originalName: "Caesar Salad", translation: "Салат Цезарь", description: "Салат из листьев ромэна, гренок, пармезана и заправки на основе яиц", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: false),
+                TranslatedDish(originalName: "Margherita Pizza", translation: "Пицца Маргарита", description: "Классическая итальянская пицца с томатами, моцареллой и базиликом", allergens: ["Молочные продукты", "Глютен"], isCertified: true),
+                TranslatedDish(originalName: "Beef Stroganoff", translation: "Бефстроганов", description: "Русское блюдо из говядины в сметанном соусе", allergens: ["Молочные продукты"], isCertified: false),
+                TranslatedDish(originalName: "Tiramisu", translation: "Тирамису", description: "Итальянский десерт на основе маскарпоне и кофе", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: true)
+            ]
+            
+            self.translationResult = "Translation completed"
+            self.isTranslating = false
+        }
+    }
+    #endif
     
     private func parseAndDisplayResults(_ json: [String: Any]) {
         if let error = json["error"] as? String {

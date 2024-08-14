@@ -44,7 +44,6 @@ struct DishView: View {
             }
         }
         .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.white)
         .cornerRadius(8)
         .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 2)

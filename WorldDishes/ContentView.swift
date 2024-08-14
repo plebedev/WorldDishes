@@ -22,19 +22,8 @@ struct ContentView: View {
                     imageView
                     
 #if DEBUG
-                    Button("Select Test Image") {
-                        showTestImages.toggle()
-                    }
-                    .actionSheet(isPresented: $showTestImages) {
-                        ActionSheet(title: Text("Select Test Image"), buttons:
-                                        testImages.map { imageName in
-                                .default(Text(imageName)) {
-                                    viewModel.image = UIImage(named: imageName)
-                                }
-                        } + [.cancel()]
-                        )
-                    }
-#endif
+                    debugControls
+                    #endif
                     
                     imageButtons
                     languagePicker
@@ -144,21 +133,42 @@ struct ContentView: View {
                     .font(.headline)
             }
             
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                ForEach(viewModel.translatedDishes, id: \.originalName) { dish in
-                    Button(action: {
-                        // This action will be handled by the DishView's onTapGesture
-                    }) {
-                        DishView(dish: dish)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                }
+            List(viewModel.translatedDishes, id: \.originalName) { dish in
+                DishView(dish: dish)
+                    .listRowInsets(EdgeInsets())
+                    .background(Color.white)
             }
+            .listStyle(PlainListStyle())
+            .frame(height: CGFloat(viewModel.translatedDishes.count) * 150) // Adjust 150 based on your average DishView height
         }
         .padding()
         .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
     }
+    
+#if DEBUG
+    private var debugControls: some View {
+        VStack {
+            Toggle("Debug Mode", isOn: $viewModel.isDebugMode)
+                .padding()
+                .background(Color.yellow.opacity(0.2))
+                .cornerRadius(8)
+            
+            Button("Select Test Image") {
+                showTestImages.toggle()
+            }
+            .actionSheet(isPresented: $showTestImages) {
+                ActionSheet(title: Text("Select Test Image"), buttons:
+                                testImages.map { imageName in
+                                    .default(Text(imageName)) {
+                                        viewModel.image = UIImage(named: imageName)
+                                    }
+                                } + [.cancel()]
+                )
+            }
+        }
+    }
+    #endif
 }
 
 #if DEBUG
