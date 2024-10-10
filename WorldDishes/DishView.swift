@@ -28,13 +28,11 @@ struct DishView: View {
             
             Text(dish.translation)
                 .font(.caption)
-                .foregroundColor(.secondary)
                 .lineLimit(1)
             
             if !dish.description.isEmpty {
                 Text(dish.description)
                     .font(.caption)
-                    .foregroundColor(.secondary)
                     .lineLimit(2)
             }
             
