@@ -124,6 +124,15 @@ struct ContentView: View {
     
     private var translationResultView: some View {
         VStack(alignment: .leading, spacing: 15) {
+            if !viewModel.translationResult.isEmpty && viewModel.translatedDishes.isEmpty {
+                Text(viewModel.translationResult)
+                    .font(.headline)
+                    .foregroundColor(.red)
+                    .padding()
+                    .background(Color.red.opacity(0.1))
+                    .cornerRadius(8)
+            }
+            
             if let menuLanguage = viewModel.menuLanguage {
                 Text("Menu Language: \(menuLanguage)")
                     .font(.headline)
@@ -133,13 +142,20 @@ struct ContentView: View {
                     .font(.headline)
             }
             
-            List(viewModel.translatedDishes, id: \.originalName) { dish in
-                DishView(dish: dish)
-                    .listRowInsets(EdgeInsets())
-                    .background(Color.white)
+            if !viewModel.translatedDishes.isEmpty {
+                List(viewModel.translatedDishes, id: \.originalName) { dish in
+                    DishView(dish: dish)
+                        .listRowInsets(EdgeInsets())
+                        .background(Color.white)
+                }
+                .listStyle(PlainListStyle())
+                .frame(height: CGFloat(viewModel.translatedDishes.count) * 150) // Adjust 150 based on your average DishView height
+            } else if viewModel.translationResult == "Translation completed" {
+                Text("No dishes found in the image.")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding()
             }
-            .listStyle(PlainListStyle())
-            .frame(height: CGFloat(viewModel.translatedDishes.count) * 150) // Adjust 150 based on your average DishView height
         }
         .padding()
         .background(Color.gray.opacity(0.1))
