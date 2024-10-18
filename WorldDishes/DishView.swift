@@ -64,4 +64,5 @@ struct TranslatedDish {
     let description: String
     let allergens: [String]
     let isCertified: Bool
+    let dishIndex: Int
 }

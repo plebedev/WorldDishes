@@ -132,11 +132,11 @@ class ContentViewModel: ObservableObject {
             self.sourceLanguage = "English"
             
             self.translatedDishes = [
-                TranslatedDish(originalName: "Spaghetti Carbonara", translation: "Спагетти Карбонара", description: "Классическое итальянское блюдо из пасты с яйцами, сыром, перцем и панчеттой", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: true),
-                TranslatedDish(originalName: "Caesar Salad", translation: "Салат Цезарь", description: "Салат из листьев ромэна, гренок, пармезана и заправки на основе яиц", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: false),
-                TranslatedDish(originalName: "Margherita Pizza", translation: "Пицца Маргарита", description: "Классическая итальянская пицца с томатами, моцареллой и базиликом", allergens: ["Молочные продукты", "Глютен"], isCertified: true),
-                TranslatedDish(originalName: "Beef Stroganoff", translation: "Бефстроганов", description: "Русское блюдо из говядины в сметанном соусе", allergens: ["Молочные продукты"], isCertified: false),
-                TranslatedDish(originalName: "Tiramisu", translation: "Тирамису", description: "Итальянский десерт на основе маскарпоне и кофе", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: true)
+                TranslatedDish(originalName: "Spaghetti Carbonara", translation: "Спагетти Карбонара", description: "Классическое итальянское блюдо из пасты с яйцами, сыром, перцем и панчеттой", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: true, dishIndex: 0),
+                TranslatedDish(originalName: "Caesar Salad", translation: "Салат Цезарь", description: "Салат из листьев ромэна, гренок, пармезана и заправки на основе яиц", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: false, dishIndex: 1),
+                TranslatedDish(originalName: "Margherita Pizza", translation: "Пицца Маргарита", description: "Классическая итальянская пицца с томатами, моцареллой и базиликом", allergens: ["Молочные продукты", "Глютен"], isCertified: true, dishIndex: 2),
+                TranslatedDish(originalName: "Beef Stroganoff", translation: "Бефстроганов", description: "Русское блюдо из говядины в сметанном соусе", allergens: ["Молочные продукты"], isCertified: false, dishIndex: 3),
+                TranslatedDish(originalName: "Tiramisu", translation: "Тирамису", description: "Итальянский десерт на основе маскарпоне и кофе", allergens: ["Яйца", "Молочные продукты", "Глютен"], isCertified: true, dishIndex: 4)
             ]
             
             self.translationResult = "Translation completed"
@@ -156,14 +156,21 @@ class ContentViewModel: ObservableObject {
         
         if let dishes = json["dishes"] as? [String: [String: Any]] {
             translatedDishes = dishes.map { (originalName, dishInfo) in
-                TranslatedDish(
-                    originalName: originalName,
-                    translation: dishInfo["translation"] as? String ?? "",
-                    description: dishInfo["description"] as? String ?? "",
-                    allergens: dishInfo["allergens"] as? [String] ?? [],
-                    isCertified: dishInfo["certified"] as? Bool ?? false
-                )
-            }
+                print("Original Name: \(originalName)")
+                        print("Dish Info: \(dishInfo)")
+                        
+                        let index = dishInfo["index"] as? Int ?? 0
+                        print("Extracted Index: \(index)")
+                        
+                        return TranslatedDish(
+                            originalName: originalName,
+                            translation: dishInfo["translation"] as? String ?? "",
+                            description: dishInfo["description"] as? String ?? "",
+                            allergens: dishInfo["allergens"] as? [String] ?? [],
+                            isCertified: dishInfo["certified"] as? Bool ?? false,
+                            dishIndex: index
+                        )
+            }.sorted { $0.dishIndex < $1.dishIndex }
         }
         
         translationResult = translatedDishes.isEmpty ? "No translation data found." : "Translation completed"
