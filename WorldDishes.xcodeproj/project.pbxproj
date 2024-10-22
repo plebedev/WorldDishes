@@ -444,7 +444,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorldDishes/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "World Dishes Translator";
+				INFOPLIST_KEY_CFBundleDisplayName = "World Dishes Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to your camera to take photos of menus.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your camera to take photos of menus.";
@@ -479,7 +479,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WorldDishes/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "World Dishes Translator";
+				INFOPLIST_KEY_CFBundleDisplayName = "World Dishes Identifier";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs access to your camera to take photos of menus.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs access to your camera to take photos of menus.";
