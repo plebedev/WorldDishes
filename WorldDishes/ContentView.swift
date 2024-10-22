@@ -40,7 +40,7 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Menu Translator")
+                    Text("World Dishes Identifier")
                         .font(.headline)
                 }
             }
