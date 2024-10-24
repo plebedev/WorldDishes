@@ -22,17 +22,19 @@ struct DishView: View {
                 Text(dish.originalName)
                     .font(.subheadline)
                     .fontWeight(.medium)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.black)
             }
             .lineLimit(1)
             
             Text(dish.translation)
                 .font(.caption)
+                .foregroundColor(.blue)
                 .lineLimit(1)
             
             if !dish.description.isEmpty {
                 Text(dish.description)
                     .font(.caption)
+                    .foregroundColor(.blue)
                     .lineLimit(2)
             }
             
